@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css"> 
+    <title>The story repeats itself</title>
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'mkt8ycu',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <script type="importmap">
+    {
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="letterbox top"></div>
+    <nav class="navbar">
+      <!-- <h1>
+        <a href="/" class="logo">
+          Awaken
+        </a>
+      </h1> -->
+    </nav>
+    <main>
+      <div id="loader">
+        <div class="spinner"></div>
+      </div>
+      <section class="" id="hero">
+        
+        <h1 class="titulo">
+          <span>The</span>
+          <span>story</span>
+          <span class="span-color">repeats</span>
+          <span>itself</span>  
+        </h1>
+      </section>
+      <div class="wipe horizontal">
+        <div class="linea-color"></div>
+        <div class="linea-color"></div>
+        <div class="linea-color"></div>
+        <div class="linea-color"></div>
+      </div>
+      <section class="" id="nacimiento">
+        <div class="vhs-container">
+          <div class="vhs-overlay"></div>
+        </div>       
+        <canvas id="canvasTele"></canvas>
+        <!-- <canvas id="canvas2d"></canvas> -->
+        
+        <canvas id="canvasGrida"></canvas>
+        
+        <div class="contenedor-nacimiento primero">
+            <div class="div-xp efecto-vhs">
+              <div class="barra-xp">
+                <h2>THE FIRST DIGITAL SHIFT</h2>
+                <button>X</button>      
+              </div>
+              <div class="cuadro-xp">
+                <p class="texto-xp" id="textoglitch">
+                  In the early 1990s, marketing and design found themselves positioned 
+                  between the fading glow of the analog world and the first flickers 
+                  of the digital era. Studios were still ruled by physical mockups, 
+                  hand-drawn typography, and print layouts, yet personal computers 
+                  quietly entered the scene, offering new tools that felt experimental 
+                  and full of possibility. Early versions of Photoshop, vector software, 
+                  and dial-up connections introduced a new creative playground 
+                  where pixelated textures, compressed images, primitive gradients, 
+                  and low-poly forms weren't stylistic choices but natural outcomes of 
+                  a young digital medium learning its language.
+                </p>
+              </div>
+          </div>
+          
+        </div>
+      </section>
+      <section class="" id="entrada">
+        <h2 class="titulo titulo-entrada">
+          <span>TECH</span>
+          <span class="span-color">KNOCKS</span>
+          <span>THE</span>
+          <span class="span-color">DOOR</span>
+        </h2>
+        <div class="div-cristal">
+          <p>
+            As the 2000s unfolded, technology accelerated with a momentum that 
+            reshaped every corner of communication. Broadband replaced the crackle 
+            of dial-up, giving rise to smoother interfaces, early mobile browsing, 
+            richer media, and design languages built on usability rather than 
+            improvisation. Flash animations danced across screens, CSS brought 
+            structure, and global connectivity rewrote the rules of engagement.
+          </p>
+          <p>
+            Each advancement pushed designers and marketers to refine their craft. 
+            Visual systems became cleaner, more deliberate, more modular. 
+            Brands discovered the power of data-driven decisions and real-time 
+            interaction. Digital presence matured from novelty to necessity.
+          </p>
+          <p>
+            Today, we stand at another major inflection point—one where artificial 
+            intelligence steps forward as both tool and collaborator. 
+            AI assists in generating imagery, drafting narratives, predicting behavior, 
+            and expanding creative possibilities at unprecedented scale. 
+            The shift echoes earlier transitions, not in technology itself but 
+            in the sense of standing at the edge of a new frontier, watching familiar 
+            questions take new forms.
+          </p>
+          <p>
+            The medium changes, but the underlying pattern—the rise, adaptation, 
+            and reinvention—feels strangely recognizable.
+          </p>
+        </div>
+      </section>
+      
+      <canvas id="canvasWeb"></canvas>
+      <canvas id="canvasCorrientes"></canvas>
+
+      <section id="corrientes">
+        <div id="textoCorrientes">
+        <h2 id="decodificar"></h2>
+        <div class="div-cristal izq">
+          <p class="highlight">
+            Every technological leap leaves a fingerprint on aesthetics. 
+            The low-resolution charm of the 90s resurfaced years later in deliberate 
+            retro-digital styles; bold gradients from the early 2000s returned 
+            in modern palettes; and the playful chaos of early web design finds 
+            new expression in generative visuals. These echoes aren't coincidence. 
+            They're reminders that visual culture often loops back, revisiting old 
+            paths with new tools.
+          </p>
+          <p class="highlight">
+            AI intensifies this dynamic. It allows designers to merge past and 
+            future, combining analog warmth with machine precision, reviving 
+            low-poly textures in high-definition contexts, and blurring the 
+            line between handcrafted and generated. Artistic movements stretch, 
+            fold, and reassemble themselves, finding fresh relevance in shapes 
+            that once felt outdated.
+          </p>
+        </div>
+        <div class="deco-corrientes der">
+          <div class="overlay"></div>
+        </div>
+        <div class="div-cristal der">
+          <p class="highlight">
+            For marketers, the shift mirrors earlier transformations. Just as the 
+            arrival of the internet once reshaped communication, AI now redefines 
+            how brands understand audiences, craft messages, and build experiences. 
+            The challenges feel new, yet the underlying rhythm is familiar: 
+            technology advances, practices adjust, creativity adapts.
+          </p>
+          <p class="highlight">
+            Across decades, the industry evolves in waves. Ideas fade, return, 
+            and reappear in altered forms—never identical, always connected. 
+            What looks like progress in a straight line often reveals itself as 
+            part of a larger cycle, turning again toward motifs we thought we had 
+            left behind.
+          </p>
+        </div>
+        <div class="deco-corrientes izq">
+          <div class="overlay"></div>
+        </div>
+        </div>
+      </section> 
+    </main>
+    <footer id="footer"class="wipe vertical">
+      <div class="contenedor-lineas">
+        <div class="linea-color">
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+          <span>The story repeats itself</span>
+        </div>
+        <div class="linea-color">
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+          <span>Asier Marine Martinez-Losa</span>
+        </div>
+        <div class="linea-color">
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+          <span>Proyecto Final de Master</span>
+        </div>
+        <div class="linea-color">
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+          <span>Master en Programacion para Creativos</span>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>
