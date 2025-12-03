@@ -18,8 +18,8 @@ Configuraciones globales
   --tit-xl: clamp(7rem, 2rem + 5vw, 7rem);
 
   --space-xs: clamp(2rem, 0.4rem + 5vw, 3rem);
-  --space-sm:  clamp(25rem, 0.9rem + 1vw, 30rem);
-  --space-lg:  clamp(50rem, 1.8rem + 2vw, 60rem);
+  --space-sm:  clamp(10rem, 0.9rem + 1vw, 15rem);
+  --space-lg:  clamp(30rem, 1.8rem + 2vw, 40rem);
   --space-xl:  clamp(75rem, 2.5rem + 3vw, 90rem);
 
 /*   --space-xs: 10rem;
@@ -357,7 +357,7 @@ Corrientes
     background-image: 
       linear-gradient(to right, rgba(0,0,0,0.5) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0,0,0,0.5) 1px, transparent 1px);
-    background-size: var(--space-xs) var(--space-xs);
+    background-size: var(--space-sm) var(--space-sm);
     rotate: 180deg;
     /* Degradado para simular desvanecimiento */
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.1));
@@ -372,7 +372,7 @@ Corrientes
     /* border: 2px solid var(--verde); */
     background-color: transparent;
     padding: 0 !important;
-    margin: 0 var(--space-xs);
+    margin: 0 var(--space-sm);
     width: fit-content;
     z-index: 100;
     -webkit-backdrop-filter:none;
@@ -431,7 +431,7 @@ Corrientes
   max-height: 4em; 
   /* overflow: hidden;  */
   transition: max-height 0.3s ease; 
-  margin-left: var(--space-xs);
+  margin-left: var(--space-sm);
   text-transform: uppercase;
   line-height: 0.8;
   margin-top: 50vh;
@@ -609,7 +609,7 @@ background:
    ============================================================ */
 @media (min-width: 1024px) {
   #hero .titulo{
-    margin-top: var(--space-sm);
+    margin-top: var(--space-lg);
     font-size: var(--tit-xl) !important;
   }
 }
@@ -640,7 +640,7 @@ background:
   }
   .cuadro-xp{
     border-width: 0.4vw !important;
-    padding: 1vw 2vw !important;
+    padding: var(--texto-lg) calc(var(--texto-sm) * 2) !important;
     font-size:  var(--texto-xl) !important;
   }
   .titulo-entrada{

@@ -74,8 +74,7 @@ let posicionamientoModelos = [0,0,0]
 function obtenerEscala() {
   ancho = window.innerWidth;
   if (ancho < 480) {
-    escalaModelos = 1;
-    
+    escalaModelos = 1;  
   }
   else if (ancho < 768) escalaModelos = 1.2;
   else if (ancho < 1024) escalaModelos = 1.4;
@@ -225,7 +224,8 @@ let posicionModeloEntrada = 10;
 let inicioMovimientoCanvas = false;
 
 let zonaModeloInicio = true;
-let zonaModeloEntradas = true;
+let zonaModeloNacimiento = false;
+let zonaModeloEntradas = false;
 let zonaModeloCorrientes = true;
 
 const ejeModeloInicio = new THREE.Vector3(0, 1, 0);
@@ -262,7 +262,7 @@ escenaGrida.add(grid);
 function cssToThree(color) {
   return Number(color.replace("#", "0x"));
 }
-/* gsap.set("#canvasWeb", { zIndex: 100, y: 0 }) */
+gsap.set("#canvasWeb", { zIndex: 100, y: 0 })
 //  Prevenimos que el modelo inicial se cargue si se recarga la página en mitad de scroll
 
 window.addEventListener("scroll", () => {
@@ -288,37 +288,30 @@ window.addEventListener("scroll", () => {
       autoAlpha: 0
     })
   }
-/*   if (scrollPos >= 9900) {
-    gsap.set("#canvas2d", { autoAlpha: 1 })
-  } else {
-    gsap.set("#canvas2d", { autoAlpha: 0 })
-  } */
-  if (scrollPos > 700 && scrollPos <= 3100) {
-/*     gsap.set("#canvasWeb", {
-      y: "0"
-    }) */
-    if (!zonaModeloEntradas) {
+  if (scrollPos > 700 && scrollPos <= 4500) {
+    if (!zonaModeloNacimiento) {
       entrarZonaNacimiento()
+    }
+    zonaModeloNacimiento = true;
+  } else {
+    if (zonaModeloNacimiento) {
+      salirZonaNacimiento()
+    }
+    zonaModeloNacimiento = false;
+  }
+  if (scrollPos > 4000 && scrollPos <= 7800) { 
+    if (!zonaModeloEntradas) {
+      gsap.set("#canvasWeb", { y: "100vh" })
+      escena.add(cortina);
+      escena.add(modelo);
     }
     zonaModeloEntradas = true;
   } else {
     if (zonaModeloEntradas) {
-      salirZonaNacimiento()
+      escena.remove(cortina);
+      escena.remove(modelo);
     }
     zonaModeloEntradas = false;
-  }
- /*  if ((scrollPos > 2500 && scrollPos <= 2900) || (scrollPos > 7200 && scrollPos <= 7300)) {
-    gsap.set("#canvasWeb", {
-      y: "-100vh"
-    })
-  } */
-  if (scrollPos > 3100 && scrollPos <= 7200) { 
-    escena.add(cortina);
-    escena.add(modelo);
-  } else {
-    escena.remove(cortina);
-    escena.remove(modelo);
-    
   }
   if (scrollPos > 7300 && scrollPos <= 9000) { // Revisar cuando actualice el maquetado
     zonaModeloCorrientes = true;
@@ -391,7 +384,6 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
     pin: "#hero",
     onUpdate: (self) => {
       //  Mientras está activo
-      console.log("lo intento")
       if (self.progress < 1) {
         if (modeloInicio) {
           escena.add(modeloInicio);
@@ -499,14 +491,14 @@ function entrarZonaNacimiento() {
 }
 function salirZonaNacimiento() {
   escenaTele.remove(modeloEntrada);
- /*  gsap.set("#canvasWeb", { zIndex: 10 }) */
+  gsap.set("#canvasWeb", { y: "100vh" })
 }
 
 //  Cambio de texto Glitch
 ScrollTrigger.create({
   trigger: "#nacimiento",
-  start: "top 40%",
-  end: "+=1000",      
+  start: "top 30%",
+  end: "+=1500",      
   scrub: true,
  /*  markers: true,  */
   pin: ".div-xp",
@@ -556,7 +548,9 @@ const tl = gsap.timeline({
     /* markers: true */
   }
 });
-
+gsap.set("#canvasWeb", {
+  y: "100vh"
+})
 tl.fromTo("#canvasWeb",
   { y: "100vh"
    },      // empieza fuera por abajo
@@ -590,7 +584,7 @@ loader.load(
 );
 
 function aparicionEntrada() {
-  /* gsap.set("#canvasWeb", {
+ /*  gsap.set("#canvasWeb", {
     y: "0"
   }) */
   gsap.timeline({
@@ -607,13 +601,13 @@ function aparicionEntrada() {
     ease: "none"
   }, 0.2)
   .to(modelo.rotation, {
-    y: Math.PI / 4,
+    y: Math.PI / 10,
     ease: "none"
   }, 0)
   .to(modelo.position, {
     z: -18,
     ease: "none"
-  }, 0.6)
+  }, 0.8)
 }
 
 //  Efecto decodificar
@@ -883,11 +877,7 @@ tlImagenModernaDer.fromTo(".deco-corrientes.izq",
     y: "-50vh"
   }, "<=0.2"
 )
-document.querySelectorAll('*').forEach(el => {
-  if (el.scrollHeight > (window.innerHeight * 1.2)) {
-    console.log("Elemento sospechoso:", el, "Altura:", el.scrollHeight);
-  }
-});
+
 gsap.set(".contenedor-lineas", {
   y: "90vh"
 })
