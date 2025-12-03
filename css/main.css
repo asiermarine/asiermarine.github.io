@@ -348,7 +348,7 @@ Corrientes
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -40vh;
     left: 0;
     width: 100%;
     height: 50%;
@@ -588,8 +588,22 @@ background:
     100% { top : 0.5px }
 }
 
-@media (min-width: 768px) {
-  
+.bloqueo{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--blanco);
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: auto var(--space-lg);
+  & p{
+    font-size: var(--tit-sm);
+    margin: auto var(--space-xs);
+  }
 }
 /* ============================================================
    TABLET 768px – empiezan los cambios visibles
@@ -608,6 +622,9 @@ background:
    ESCRITORIO 1024px – Layout completo
    ============================================================ */
 @media (min-width: 1024px) {
+  .bloqueo{
+    display: none;
+  }
   #hero .titulo{
     margin-top: var(--space-lg);
     font-size: var(--tit-xl) !important;

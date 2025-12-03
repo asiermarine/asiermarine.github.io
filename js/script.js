@@ -268,7 +268,7 @@ gsap.set("#canvasWeb", { zIndex: 100, y: 0 })
 window.addEventListener("scroll", () => {
   let scrollPos = window.scrollY || window.pageYOffset;
  /*  console.log(scrollPos) */
-  if (scrollPos <= 700) {
+  if (scrollPos <= 1100) {
     gridaRaton = false;
     zonaModeloInicio = true;
     grid.material.color.set(0x000000); 
@@ -377,8 +377,8 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
   ease: "none",
   scrollTrigger: {
     trigger: "#hero",
-    start: "30px top",
-    end: "40% top",
+    start: "top top",
+    end: "50% top",
     scrub: 1,
     markers: true, 
     pin: "#hero",
