@@ -63,7 +63,29 @@ p{
   font-style: normal;
   line-height: 1.1;
 }
-
+.deco-hero {
+  width: 90vw;
+  height: 90vh;
+  position: fixed;
+  flex-direction: row;
+  top: 0;
+  z-index: 100;
+  left: 0;
+  margin: 5vh 5vw;
+  display: flex;
+  flex-wrap: wrap;          /* permite que los elementos se dividan en filas */
+  justify-content: space-between;  /* los elementos se separan horizontalmente */
+  align-content: space-between;    /* los elementos se separan verticalmente */
+  & .izq{
+    text-align: start;
+  }
+  & .der{
+    text-align: end;
+  }
+}
+.deco-hero > div {
+  width: 48%;             /* puede ajustar al contenido */
+}
 .letterbox{
   position: fixed;
   background-color: var(--verde);
@@ -152,6 +174,7 @@ Secciones
   & h1{
     position: fixed;
     margin-top: var(--space-xl);
+    margin-left: var(--space-xs);
     & .span-color{
       color: var(--verde);
     }

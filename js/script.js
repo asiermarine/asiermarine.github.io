@@ -277,6 +277,9 @@ window.addEventListener("scroll", () => {
     gsap.set(".letterbox", {
       autoAlpha: 1
     })
+    gsap.set(".deco-hero", {
+      autoAlpha: 1
+    })
     gsap.set("#canvasWeb", { zIndex: 400, y: 0 })
   } else {
     gridaRaton = true;
@@ -284,6 +287,9 @@ window.addEventListener("scroll", () => {
     grid.material.vertexColors = false;            
     grid.material.needsUpdate = true;    
     zonaModeloInicio = false;
+    gsap.set(".deco-hero", {
+      autoAlpha: 0
+    })
     gsap.set(".letterbox", {
       autoAlpha: 0
     })
