@@ -605,17 +605,6 @@ background:
     margin: auto var(--space-xs);
   }
 }
-/* ============================================================
-   TABLET 768px – empiezan los cambios visibles
-   ============================================================ */
-@media (max-width: 768px) {
-  #hero .titulo{
-    margin-top: var(--space-sm);
-  }
-  .highlight{
-    max-width: 100% !important;
-  }
-}
 
 
 /* ============================================================
@@ -629,24 +618,6 @@ background:
     margin-top: var(--space-lg);
     font-size: var(--tit-xl) !important;
   }
-}
-
-
-
-
-/* ============================================================
-   ESCRITORIO GRANDE 1440px – Contenido más centrado
-   ============================================================ */
-
-
-
-
-
-
-/* ============================================================
-   ULTRAWIDE 1920px – Ajustes suaves
-   ============================================================ */
-@media (min-width: 1920px) {
   .barra-xp{
     font-size: var(--tit-sm) !important;
     height: auto !important;
@@ -665,3 +636,4 @@ background:
     margin-top: var(--space-sm);
   }
 }
+
