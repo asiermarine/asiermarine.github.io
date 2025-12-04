@@ -390,8 +390,7 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
     }
   }
 })
-//  COnfiguraciones de la grida
-
+//  Configuraciones de la grida
 .to("#hero .titulo", {
   y: "-=400",
   scrollTrigger: {
