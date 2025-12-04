@@ -161,7 +161,7 @@ Secciones
   padding: 0 var(--space-xs);
   & h1{
     position: fixed;
-    margin-top: var(--space-xl);
+    margin-top: calc(var(--space-sm) * 2);
     margin-left: var(--space-xs);
     & .span-color{
       color: var(--verde);
@@ -619,6 +619,11 @@ background:
   .titulo-entrada{
     margin-bottom: var(--space-xs);
     margin-top: var(--space-sm);
+  }
+}
+@media (min-width: 1440px) {
+  #hero h1{
+    margin-top: var(--space-lg);
   }
 }
 
