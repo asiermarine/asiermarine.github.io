@@ -600,7 +600,7 @@ background:
     display: none;
   }
   #hero .titulo{
-    margin-top: var(--space-lg);
+    margin-top: calc(var(--space-sm) * 2);
     font-size: var(--tit-xl) !important;
   }
   .barra-xp{
