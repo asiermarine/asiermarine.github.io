@@ -25,8 +25,6 @@ elegirColores();
 /*
 PREPARACIÓN WEB 
 */
-/* ScrollTrigger.config({ ignoreMobileResize: true });
-ScrollTrigger.refresh(); */
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   };
@@ -64,9 +62,6 @@ let opcionesImagenes = [
   "../img/trafico.png",
   "../img/ordenador.png",
 ];
-/*
-Preparación modelos responsive
-*/
 
 let ancho;
 let escalaModelos = 1;
@@ -98,7 +93,6 @@ let t = 0;
 
 let raton = { x: 0, y: 0 };
 window.addEventListener('mousemove', (event) => {
-    // Normalizamos la posición entre -1 y 1
     raton.x = (event.clientX / window.innerWidth) * 2 - 1;
     raton.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
@@ -219,14 +213,9 @@ let modelo;
 let modeloInicio;
 let modeloEntrada;
 let modeloCorrientes;
-
-let posicionModeloEntrada = 10;
-let inicioMovimientoCanvas = false;
-
 let zonaModeloInicio = true;
 let zonaModeloNacimiento = false;
 let zonaModeloEntradas = false;
-let zonaModeloCorrientes = true;
 
 const ejeModeloInicio = new THREE.Vector3(0, 1, 0);
 
@@ -263,7 +252,6 @@ function cssToThree(color) {
   return Number(color.replace("#", "0x"));
 }
 gsap.set("#canvasWeb", { zIndex: 100, y: 0 })
-//  Prevenimos que el modelo inicial se cargue si se recarga la página en mitad de scroll
 
 window.addEventListener("scroll", () => {
   let scrollPos = window.scrollY || window.pageYOffset;
@@ -319,11 +307,6 @@ window.addEventListener("scroll", () => {
     }
     zonaModeloEntradas = false;
   }
-  if (scrollPos > 7300 && scrollPos <= 9000) { // Revisar cuando actualice el maquetado
-    zonaModeloCorrientes = true;
-  } else {
-    zonaModeloCorrientes = false;
-  }
 });
 
 
@@ -362,12 +345,10 @@ gsap.set(".barra-xp", { backgroundColor: color2 });
 gsap.set(".cuadro-xp", { borderColor: color2 });
 
 //  Configuraciones tercera sección
-/* gsap.set(".div-cristal", { borderColor: color3 }) */
 gsap.set(".titulo-entrada .span-color", { color: color3 });
 
 //  Configuraciones cuarta sección
 gsap.set("#decodificar", { color: color4 });
-/* gsap.set("#corrientes .div-cristal", { borderColor: color4 }) */
 gsap.set("#corrientes .deco-corrientes", { color: color4 })
 gsap.set(".overlay", { backgroundColor: color4 });
 
@@ -386,7 +367,7 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
     start: "top top",
     end: "50% top",
     scrub: 1,
-    markers: true, 
+    /* markers: true,  */
     pin: "#hero",
     onUpdate: (self) => {
       //  Mientras está activo
@@ -398,7 +379,6 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
         gsap.set(".navbar", { autoAlpha: 1, duration: 1 });
         gsap.set("#hero", { autoAlpha: 1, duration: 0 });
         gsap.to(".wipe.horizontal", { autoAlpha: 1, duration: 0 });
-        /* escena.add(grid) */
       }
       //  Al terminar
       if (self.progress === 1) {
@@ -407,23 +387,12 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
         gsap.set(".navbar", { autoAlpha: 0, duration: 0 });
         gsap.set("#hero", { autoAlpha: 0, duration: 0 });
         gsap.to(".wipe.horizontal", { autoAlpha: 0, duration: 0.2 });
-        /* escena.remove(grid); */
       }
     }
   }
 })
 //  COnfiguraciones de la grida
-/* .to(grid.rotation, {
-  x: "-=1",
-  y: "+=0.5",
-  scrollTrigger: {
-    trigger: "#hero",
-    start: "top top",
-    end: "top bottom",
-    markers: true,
-    scrub: 3,
-  }
-}, "<") */
+
 .to("#hero .titulo", {
   y: "-=400",
   scrollTrigger: {
@@ -464,14 +433,10 @@ function entrarZonaNacimiento() {
         if (child.isMesh && child.name === 'Screen_Material002_0') {
             const loader = new THREE.TextureLoader();
             const texture = loader.load(opcionesImagenes[Math.floor(Math.random() * 6)], () => {
-              // Opcional: ajustar si la textura se ve invertida
-              /* texture.flipY = false; */
               texture.colorSpace = THREE.SRGBColorSpace;
               texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping; 
               child.material.map = texture;
               child.material.needsUpdate = true;
-
-              // Opcional para materiales PBR
               child.material.metalness = 0;
               child.material.roughness = 1;
             });
@@ -509,7 +474,7 @@ ScrollTrigger.create({
  /*  markers: true,  */
   pin: ".div-xp",
   onUpdate: (self) => {
-    let p = self.progress;  // 0 → 1
+    let p = self.progress; 
     // GLITCH 
         const glitchIntensity = Math.pow(
             Math.sin(p * Math.PI),  //  Recorrido senoidal aprovehcando el rango 0-1
@@ -559,11 +524,11 @@ gsap.set("#canvasWeb", {
 })
 tl.fromTo("#canvasWeb",
   { y: "100vh"
-   },      // empieza fuera por abajo
-  { y: "0vh", duration: 1 } // llega al centro
+   },      
+  { y: "0vh", duration: 1 } 
 );
 tl.to("#canvasWeb",
-  { y: "0vh", duration: 1 } // no cambia nada → pausa controlada por scroll
+  { y: "0vh", duration: 1 } 
 );
 tl.to("#canvasWeb",
   { y: "-100vh", duration: 1 }
@@ -590,9 +555,6 @@ loader.load(
 );
 
 function aparicionEntrada() {
- /*  gsap.set("#canvasWeb", {
-    y: "0"
-  }) */
   gsap.timeline({
     scrollTrigger: {
       trigger: "#entrada",
@@ -690,7 +652,6 @@ async function decodificar() {
   }
 }
 
-let entrarCorrientes = false;
 loader.load(
   "../modelos/computer_monitor_lowpoly_model.glb",
   (gltf) => {
@@ -713,9 +674,7 @@ loader.load(
         /* markers: true, */
         scrub: 1,
         onEnter: () => escenaCorrientes.add(modeloCorrientes),
-        onEnterBack: () => escenaCorrientes.add(modeloCorrientes),
-        /* onLeave: () => setTimeout(escenaCorrientes.remove(modeloCorrientes), 2000),
-        onLeaveBack: () => setTimeout(escenaCorrientes.remove(modeloCorrientes), 2000), */
+        onEnterBack: () => escenaCorrientes.add(modeloCorrientes)
       }
       })
       .fromTo(modeloCorrientes.position,{ 
@@ -732,9 +691,6 @@ loader.load(
         z: -10,
         duration: 1.5
       }, "-=0.3")
-      /* .add( () => {
-        escenaCorrientes.remove(modeloCorrientes);
-      }, ">")   */
     },
   (xhr) => console.log((xhr.loaded / xhr.total * 100) + "% cargado del de corrientes"),
   (err) => console.error("Error cargando modelo de corrientes", err)
@@ -744,7 +700,6 @@ function calcRotacion() {
 }
 gsap.timeline({
     scrollTrigger: {  
-  /*  ScrollTrigger.create({ */
       trigger: "#textoCorrientes", 
       start: "top bottom",    
       end: "bottom 30%", 
@@ -753,73 +708,10 @@ gsap.timeline({
       onEnter: () => {
         console.log("Entro")
         decodificar()
-      },
-      onLeaveBack: () => {
-        /* escenaCorrientes.remove(modeloCorrientes); */
-        console.log("salgo")
-      },
-      /* onUpdate: () => {
-        console.log(modeloCorrientes);
-      } */
+      }
     }
   }) 
-// Fondo canvas
-/* var c = document.getElementById("canvas2d"),
-    $ = c.getContext('2d'),
-    w = c.width = window.innerWidth,
-    h = c.height = window.innerHeight,
-    p = {
-      x: w / 2,
-      y: h / 2
-    };
 
-
-function init() {
-  stage();
-  loop();
-}
-
-function stage() {
-  w = c.width = window.innerWidth;
-  h = c.height = window.innerHeight;
-  $.fillStyle = '#ffffff';
-  $.fillRect(0, 0, w, h);
-}
-
-function step() {
-  var s = Math.random() * 50,
-      a = ~~(Math.random() * 360);
-  $.beginPath();
-  $.moveTo(p.x, p.y);
-  $.lineWidth = 1;
-  $.lineJoin = 'round';
-  $.lineCap = 'round';
-  $.strokeStyle = color2;
-  p.x += s * Math.sin(a);
-  p.y += s * Math.cos(a);
-  return p;
-}
-
-function stepStage() {
-  $.fillStyle = 'rgba(0, 255, 255, 0.5)';
-  $.fillRect(0, 0, w, h);
-}
-
-function draw() {
-  stepStage();
-  var n = step();
-  $.lineTo(n.x, n.y);
-  if (n.x < 0 || n.x > w) n.x = Math.random() * w;
-  if (n.y < 0 || n.y > h) n.y = Math.random() * h;
-  $.stroke();
-}
-
-function loop() {
-  requestAnimationFrame(loop);
-  draw();
-}
-init();
- */
 //  Canvas transicion moderna
 const cajaDer = document.getElementsByClassName('der');
 const cajaIzq = document.getElementsByClassName('izq');
@@ -849,9 +741,6 @@ cajaIzq[1].addEventListener('mouseleave', () => {
       duration: 0.5
     })
 });
-
-
-
 
 
 gsap.set(".deco-corrientes.der", {
@@ -911,7 +800,6 @@ function animar() {
   renderCorrientes.render(escenaCorrientes, camaraCorrientes); 
   requestAnimationFrame(animar);
   if(gridaRaton){
-    // Normalizamos
     let n = (raton.y + 1) / 2;   
     rotDeseada = minRot + (maxRot - minRot) * n;
     grid.rotation.x += (rotDeseada - grid.rotation.x) * 0.1;
@@ -923,10 +811,6 @@ function animar() {
   
   if (modeloInicio) {
     modeloInicio.rotateOnAxis(ejeModeloInicio, 0.01);      
-    //  Preparar efecto de seguimiento del ratón con overlays que decoren el Hero
-    /* const offset = 0.9;
-    modeloInicio.position.x = posicionamientoModelos[0] + raton.x * offset;
-    modeloInicio.position.y = posicionamientoModelos[1] + raton.y * offset;   */
   }
   if (modelo) {
       const t = clock.getElapsedTime();
@@ -956,7 +840,6 @@ window.addEventListener("resize", () => {
   camaraCorrientes.updateProjectionMatrix();
   renderCorrientes.setSize(window.innerWidth, window.innerHeight);
   setFullHeight();
-  /* stage(); */
 });
 
 })
