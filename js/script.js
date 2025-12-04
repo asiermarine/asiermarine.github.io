@@ -367,7 +367,6 @@ wipe1tl.set("#hero .titulo", { zIndex: 40 })
     start: "top top",
     end: "50% top",
     scrub: 1,
-    /* markers: true,  */
     pin: "#hero",
     onUpdate: (self) => {
       //  Mientras está activo
