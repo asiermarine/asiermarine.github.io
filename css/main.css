@@ -594,7 +594,12 @@ background:
     margin: auto var(--space-xs);
   }
 }
-
+@media (max-width: 1023px) {
+  html, body {
+  overflow: hidden;
+  height: 100%;
+}
+}
 @media (min-width: 1024px) {
   .bloqueo{
     display: none;
